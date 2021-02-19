@@ -6,3 +6,7 @@
 * Added telegram bot starter
 * Registered bot
 
+## 0.3.0-Snapshot
+*
+*
+*
