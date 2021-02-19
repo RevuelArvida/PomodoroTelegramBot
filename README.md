@@ -1,6 +1,16 @@
 ## Overview
 Time managment Telegram Bot, helping with work\brake periods and task managment.
 
+##Features
+* Bot tracks your time, by telling when to rest, and when to work!
+* Bot tracks your tasks and time spend on each one!
+
+
+##Technologies
+* Spring Boot
+* Flyway
+* PostgreSQL
+
 ## Release Notes
 Can be found in [RELEASE_NOTES](RELEASE_NOTES.md).
 
