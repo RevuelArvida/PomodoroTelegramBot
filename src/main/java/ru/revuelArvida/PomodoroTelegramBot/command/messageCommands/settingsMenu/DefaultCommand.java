@@ -9,7 +9,7 @@ import ru.revuelArvida.PomodoroTelegramBot.service.SendMessageService;
 
 import javax.annotation.PostConstruct;
 
-public class DefaultCommand implements Command {
+class DefaultCommand implements Command {
 
     private State state;
 

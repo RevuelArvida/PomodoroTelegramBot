@@ -10,8 +10,6 @@ import ru.revuelArvida.PomodoroTelegramBot.bot.states.*;
 import ru.revuelArvida.PomodoroTelegramBot.command.CommandContainersContainer;
 import ru.revuelArvida.PomodoroTelegramBot.command.botCommands.CommandContainer;
 import ru.revuelArvida.PomodoroTelegramBot.command.messageCommands.mainMenu.MainMenuCommandContainer;
-import ru.revuelArvida.PomodoroTelegramBot.command.messageCommands.settingsMenu.SettingsMenuCommandContainer;
-import ru.revuelArvida.PomodoroTelegramBot.command.messageCommands.tasksMenu.TasksMenuCommandContainer;
 import ru.revuelArvida.PomodoroTelegramBot.service.SendMessageBotService;
 import ru.revuelArvida.PomodoroTelegramBot.service.SendMessageService;
 
@@ -24,9 +22,7 @@ import ru.revuelArvida.PomodoroTelegramBot.service.SendMessageService;
 @PropertySource("datasource.properties")
 public class PomodoroBot extends TelegramLongPollingBot {
 
-    private State state;
-    private SuperState superState;
-    private CommandContainersContainer commandContainersContainer;
+    private final StateContext stateContext;
 
     @Value("${bot.botName}")
     private String botUsername;
@@ -35,29 +31,14 @@ public class PomodoroBot extends TelegramLongPollingBot {
 
 
 
+
     public PomodoroBot(){
         SendMessageService sendMessageService = new SendMessageBotService(this);
-        commandContainersContainer = new CommandContainersContainer(
+        CommandContainersContainer commandContainersContainer = new CommandContainersContainer(
                 new CommandContainer(sendMessageService),
-                new MainMenuCommandContainer(sendMessageService, this),
-                new SettingsMenuCommandContainer(sendMessageService, this),
-                new TasksMenuCommandContainer(sendMessageService, this)
-        );
+                new MainMenuCommandContainer(sendMessageService));
 
-        superState = new SuperState(new WaitState(commandContainersContainer),
-                new SettingsState(commandContainersContainer),
-                        new PersonalSettingsState(commandContainersContainer));
-
-
-        this.state = superState.getWaitState();
-    }
-
-    public SuperState getSuperState(){
-        return superState;
-    }
-
-    public void changeState(State state){
-        this.state = state;
+        this.stateContext = new StateContext(commandContainersContainer);
     }
 
     @Override
@@ -73,7 +54,7 @@ public class PomodoroBot extends TelegramLongPollingBot {
 
     @Override
     public void onUpdateReceived(Update update) {
-        state.handleUpdate(update);
+        stateContext.handleUpdate(update);
     }
 
 }

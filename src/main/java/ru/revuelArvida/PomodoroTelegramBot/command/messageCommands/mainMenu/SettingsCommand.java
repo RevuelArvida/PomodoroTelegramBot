@@ -14,11 +14,11 @@ import ru.revuelArvida.PomodoroTelegramBot.service.SendMessageService;
  * @author RevuelArvida
  */
 @Component
-public class SettingsCommand implements Command {
+class SettingsCommand implements Command {
 
     private final SendMessageService sendMessageService;
 
-    public final static String SETTINGS_MESSAGE = "Вы в меню настроек, настроек пока нет!";
+    public final static String SETTINGS_MESSAGE = "Вы перешли в меню найстроек!";
 
     public SettingsCommand (SendMessageService sendMessageService){
         this.sendMessageService = sendMessageService;

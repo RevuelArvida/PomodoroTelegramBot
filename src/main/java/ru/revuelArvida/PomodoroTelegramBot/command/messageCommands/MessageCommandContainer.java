@@ -2,6 +2,7 @@ package ru.revuelArvida.PomodoroTelegramBot.command.messageCommands;
 
 import com.google.common.collect.ImmutableMap;
 import org.springframework.stereotype.Component;
+import ru.revuelArvida.PomodoroTelegramBot.bot.states.StateContext;
 import ru.revuelArvida.PomodoroTelegramBot.command.Command;
 import ru.revuelArvida.PomodoroTelegramBot.command.Container;
 import ru.revuelArvida.PomodoroTelegramBot.command.botCommands.HelpCommand;
@@ -33,7 +34,7 @@ public class MessageCommandContainer implements Container {
     }
 
     @Override
-    public Command retrieveCommand(String commandIdentifier) {
+    public Command retrieveCommand(String commandIdentifier, StateContext stateContext) {
         return commandMap.getOrDefault(commandIdentifier, unknownCommand);
     }
 

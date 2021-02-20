@@ -23,7 +23,7 @@ public class WaitState extends State {
 
 
     @Override
-    public void handleUpdate(Update update) {
+    public void handleUpdate(Update update, StateContext stateContext) {
         if(update.hasMessage() && update.getMessage().hasText()){
 
             String message = update.getMessage().getText().trim();
@@ -35,7 +35,7 @@ public class WaitState extends State {
             } else {
 
                 String messageCommandIdentifier = message.toLowerCase();
-                mainMenuCommandContainer.retrieveCommand(messageCommandIdentifier).execute(update);
+                mainMenuCommandContainer.retrieveCommand(messageCommandIdentifier, stateContext).execute(update);
             }
 
 

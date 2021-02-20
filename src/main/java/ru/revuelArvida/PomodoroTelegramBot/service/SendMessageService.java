@@ -13,5 +13,5 @@ public interface SendMessageService {
      * @param chatId provides the destination of the message.
      * @param message provides body of the message.
      */
-    public void sendMessage(String chatId, String message);
+    void sendMessage(String chatId, String message);
 }

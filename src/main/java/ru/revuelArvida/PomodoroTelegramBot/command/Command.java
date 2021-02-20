@@ -13,6 +13,6 @@ public interface Command {
      * Main method, which is executing command logic.
      * @param update provided {@link Update} object with all the needed data for command execution.
      */
-    public void execute(Update update);
+    void execute(Update update);
 
 }

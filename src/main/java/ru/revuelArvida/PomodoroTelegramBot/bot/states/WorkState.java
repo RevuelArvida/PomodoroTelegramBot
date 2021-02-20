@@ -1,26 +1,20 @@
 package ru.revuelArvida.PomodoroTelegramBot.bot.states;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import ru.revuelArvida.PomodoroTelegramBot.command.CommandContainersContainer;
 import ru.revuelArvida.PomodoroTelegramBot.command.botCommands.CommandContainer;
-import ru.revuelArvida.PomodoroTelegramBot.command.messageCommands.settingsMenu.SettingsMenuCommandContainer;
+import ru.revuelArvida.PomodoroTelegramBot.command.messageCommands.workMenu.WorkMenuCommandContainer;
 
-@Component
-@Scope("singleton")
-public class SettingsState extends State{
+public class WorkState extends State{
 
     private final CommandContainer commandContainer;
-    private final SettingsMenuCommandContainer settingsMenuCommandContainer;
+    private final WorkMenuCommandContainer workMenuCommandContainer;
 
-    @Autowired
-    public SettingsState(CommandContainersContainer container){
+
+    public WorkState(CommandContainersContainer container){
         this.commandContainer = container.getCommandContainer();
-        this.settingsMenuCommandContainer = container.getSettingsMenuCommandContainer();
+        this.workMenuCommandContainer = container.getWorkMenuCommandContainer();
     }
-
 
     @Override
     public void handleUpdate(Update update, StateContext stateContext) {
@@ -35,10 +29,11 @@ public class SettingsState extends State{
             } else {
 
                 String messageCommandIdentifier = message.toLowerCase();
-                settingsMenuCommandContainer.retrieveCommand(messageCommandIdentifier, stateContext).execute(update);
+                workMenuCommandContainer.retrieveCommand(messageCommandIdentifier, stateContext).execute(update);
             }
 
 
         }
     }
+
 }

@@ -1,7 +1,9 @@
 package ru.revuelArvida.PomodoroTelegramBot.command;
 
+import ru.revuelArvida.PomodoroTelegramBot.bot.states.StateContext;
+
 public interface Container {
 
-    public Command retrieveCommand(String commandIdentifier);
+    Command retrieveCommand(String commandIdentifier, StateContext stateContext);
 
 }

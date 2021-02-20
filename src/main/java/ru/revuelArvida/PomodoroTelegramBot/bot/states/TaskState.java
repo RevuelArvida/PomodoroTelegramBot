@@ -1,30 +1,26 @@
 package ru.revuelArvida.PomodoroTelegramBot.bot.states;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import ru.revuelArvida.PomodoroTelegramBot.command.CommandContainersContainer;
 import ru.revuelArvida.PomodoroTelegramBot.command.botCommands.CommandContainer;
 import ru.revuelArvida.PomodoroTelegramBot.command.messageCommands.settingsMenu.SettingsMenuCommandContainer;
+import ru.revuelArvida.PomodoroTelegramBot.command.messageCommands.tasksMenu.TasksMenuCommandContainer;
 
-@Component
-@Scope("singleton")
-public class SettingsState extends State{
-
+public class TaskState extends State{
     private final CommandContainer commandContainer;
-    private final SettingsMenuCommandContainer settingsMenuCommandContainer;
+    private final TasksMenuCommandContainer tasksMenuCommandContainer;
 
     @Autowired
-    public SettingsState(CommandContainersContainer container){
+    public TaskState(CommandContainersContainer container){
         this.commandContainer = container.getCommandContainer();
-        this.settingsMenuCommandContainer = container.getSettingsMenuCommandContainer();
+        this.tasksMenuCommandContainer = container.getTasksMenuCommandContainer();
     }
 
 
     @Override
     public void handleUpdate(Update update, StateContext stateContext) {
-        if(update.hasMessage() && update.getMessage().hasText()){
+        if (update.hasMessage() && update.getMessage().hasText()) {
 
             String message = update.getMessage().getText().trim();
             if (message.startsWith(COMMAND_PREFIX)) {
@@ -35,7 +31,7 @@ public class SettingsState extends State{
             } else {
 
                 String messageCommandIdentifier = message.toLowerCase();
-                settingsMenuCommandContainer.retrieveCommand(messageCommandIdentifier, stateContext).execute(update);
+                tasksMenuCommandContainer.retrieveCommand(messageCommandIdentifier, stateContext).execute(update);
             }
 
 

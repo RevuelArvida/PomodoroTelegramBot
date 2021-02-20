@@ -1,21 +1,15 @@
-package ru.revuelArvida.PomodoroTelegramBot.command.messageCommands.mainMenu;
+package ru.revuelArvida.PomodoroTelegramBot.command.messageCommands.workMenu;
 
 import org.telegram.telegrambots.meta.api.objects.Update;
 import ru.revuelArvida.PomodoroTelegramBot.command.Command;
 import ru.revuelArvida.PomodoroTelegramBot.service.SendMessageService;
 
 
-/**
- * Implementation of {@link Command} interface for WORK {@link Command}
- *
- * @author RevuelArvida
- */
+
 class StartWorkCommand implements Command {
 
     private final SendMessageService sendMessageService;
-
-    public final static String START_WORK = "Вы запустили таймер и перешли в меню управления " +
-            "таймером!";
+    private final String START_WORK_MESSAGE = "Приступаем к работе";
 
     public StartWorkCommand(SendMessageService sendMessageService){
         this.sendMessageService = sendMessageService;
@@ -24,7 +18,6 @@ class StartWorkCommand implements Command {
 
     @Override
     public void execute(Update update) {
-        sendMessageService.sendMessage(update.getMessage().getChatId().toString(),
-                START_WORK);
+        sendMessageService.sendMessage(update.getMessage().getChatId().toString(), START_WORK_MESSAGE);
     }
 }

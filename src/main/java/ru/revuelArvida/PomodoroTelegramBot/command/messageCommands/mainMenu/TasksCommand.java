@@ -9,11 +9,11 @@ import ru.revuelArvida.PomodoroTelegramBot.service.SendMessageService;
  *
  * @author RevuelArvida
  */
-public class TasksCommand implements Command {
+class TasksCommand implements Command {
 
     private final SendMessageService sendMessageService;
 
-    private final static String TASK_MESSAGE = "Задачи, без задач";
+    private final static String TASK_MESSAGE = "Вы перешли в меню задач!";
 
     public TasksCommand(SendMessageService sendMessageService){
         this.sendMessageService = sendMessageService;
