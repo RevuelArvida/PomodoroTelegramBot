@@ -25,21 +25,8 @@ public class MainMenuCommandContainer implements Container {
 
     private final ImmutableMap<String, Command> commandMap;
     private final Command unknownCommand;
-    @Getter
-    private final SettingsMenuCommandContainer settingsMenuCommandContainer;
-    @Getter
-    private final TasksMenuCommandContainer tasksMenuCommandContainer;
-    @Getter
-    private final WorkMenuCommandContainer workMenuCommandContainer;
-
 
     public MainMenuCommandContainer(SendMessageService sendMessageService){
-
-        this.tasksMenuCommandContainer = new TasksMenuCommandContainer(sendMessageService);
-        this.settingsMenuCommandContainer =
-                new SettingsMenuCommandContainer(sendMessageService);
-        this.workMenuCommandContainer = new WorkMenuCommandContainer(sendMessageService);
-
 
         commandMap = ImmutableMap.<String, Command>builder()
                 .put(WORK.getCommandName(), new StartWorkCommand(sendMessageService))

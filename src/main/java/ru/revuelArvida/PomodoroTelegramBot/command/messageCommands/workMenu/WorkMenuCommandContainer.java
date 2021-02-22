@@ -1,7 +1,7 @@
 package ru.revuelArvida.PomodoroTelegramBot.command.messageCommands.workMenu;
 
 import com.google.common.collect.ImmutableMap;
-import ru.revuelArvida.PomodoroTelegramBot.bot.PomodoroBot;
+import org.springframework.stereotype.Component;
 import ru.revuelArvida.PomodoroTelegramBot.bot.states.StateContext;
 import ru.revuelArvida.PomodoroTelegramBot.bot.states.StateList;
 import ru.revuelArvida.PomodoroTelegramBot.command.Command;
@@ -12,6 +12,7 @@ import ru.revuelArvida.PomodoroTelegramBot.service.SendMessageService;
 
 import static ru.revuelArvida.PomodoroTelegramBot.command.messageCommands.workMenu.WorkCommandName.*;
 
+@Component
 public class WorkMenuCommandContainer implements Container {
 
 

@@ -24,16 +24,10 @@ public class SettingsMenuCommandContainer implements Container {
 
     private final ImmutableMap<String, Command> commandMap;
     private final Command unknownCommand;
-    @Getter
-    private final PersonalSettingsCommandContainer personalSettingsCommandContainer;
-
-
 
 
     public SettingsMenuCommandContainer(SendMessageService sendMessageService){
 
-        this.personalSettingsCommandContainer =
-                new PersonalSettingsCommandContainer(sendMessageService);
 
         commandMap = ImmutableMap.<String, Command>builder()
                 .put(DEFAULT.getCommandName(), new DefaultCommand(sendMessageService))

@@ -7,11 +7,6 @@ import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import ru.revuelArvida.PomodoroTelegramBot.bot.states.*;
-import ru.revuelArvida.PomodoroTelegramBot.command.CommandContainersContainer;
-import ru.revuelArvida.PomodoroTelegramBot.command.botCommands.CommandContainer;
-import ru.revuelArvida.PomodoroTelegramBot.command.messageCommands.mainMenu.MainMenuCommandContainer;
-import ru.revuelArvida.PomodoroTelegramBot.service.SendMessageBotService;
-import ru.revuelArvida.PomodoroTelegramBot.service.SendMessageService;
 
 /**
  * Telegram bot for Time Management
@@ -32,13 +27,8 @@ public class PomodoroBot extends TelegramLongPollingBot {
 
 
 
-    public PomodoroBot(){
-        SendMessageService sendMessageService = new SendMessageBotService(this);
-        CommandContainersContainer commandContainersContainer = new CommandContainersContainer(
-                new CommandContainer(sendMessageService),
-                new MainMenuCommandContainer(sendMessageService));
-
-        this.stateContext = new StateContext(commandContainersContainer);
+    public PomodoroBot(StateContext stateContext){
+        this.stateContext = stateContext;
     }
 
     @Override

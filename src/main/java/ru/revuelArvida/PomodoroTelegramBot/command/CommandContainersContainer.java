@@ -23,17 +23,23 @@ public class CommandContainersContainer {
     private final WorkMenuCommandContainer workMenuCommandContainer;
     private final PersonalSettingsCommandContainer personalSettingsCommandContainer;
 
+
+
     public CommandContainersContainer(
             CommandContainer commandContainer,
-            MainMenuCommandContainer mainMenuCommandContainer) {
+            MainMenuCommandContainer mainMenuCommandContainer,
+            SettingsMenuCommandContainer settingsMenuCommandContainer,
+            TasksMenuCommandContainer tasksMenuCommandContainer,
+            WorkMenuCommandContainer workMenuCommandContainer,
+            PersonalSettingsCommandContainer personalSettingsCommandContainer) {
 
         this.commandContainer = commandContainer;
         this.mainMenuCommandContainer = mainMenuCommandContainer;
-        this.settingsMenuCommandContainer  = mainMenuCommandContainer.getSettingsMenuCommandContainer();
-        this.tasksMenuCommandContainer = mainMenuCommandContainer.getTasksMenuCommandContainer();
-        this.workMenuCommandContainer = mainMenuCommandContainer.getWorkMenuCommandContainer();
-        this.personalSettingsCommandContainer =
-                settingsMenuCommandContainer.getPersonalSettingsCommandContainer();
+        this.settingsMenuCommandContainer  = settingsMenuCommandContainer;
+        this.tasksMenuCommandContainer = tasksMenuCommandContainer;
+        this.workMenuCommandContainer = workMenuCommandContainer;
+        this.personalSettingsCommandContainer = personalSettingsCommandContainer;
+
 
     }
 

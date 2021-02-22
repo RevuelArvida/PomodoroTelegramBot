@@ -2,6 +2,7 @@ package ru.revuelArvida.PomodoroTelegramBot.command.messageCommands.settingsMenu
 
 import com.google.common.collect.ImmutableMap;
 
+import org.springframework.stereotype.Component;
 import ru.revuelArvida.PomodoroTelegramBot.bot.states.StateContext;
 import ru.revuelArvida.PomodoroTelegramBot.bot.states.StateList;
 import ru.revuelArvida.PomodoroTelegramBot.command.Command;
@@ -12,6 +13,7 @@ import ru.revuelArvida.PomodoroTelegramBot.service.SendMessageService;
 
 import static ru.revuelArvida.PomodoroTelegramBot.command.messageCommands.settingsMenu.pesonalSettings.PersonalSettingsCommandName.*;
 
+@Component
 public class PersonalSettingsCommandContainer implements Container {
 
 

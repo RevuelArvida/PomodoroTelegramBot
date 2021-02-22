@@ -1,6 +1,6 @@
 package ru.revuelArvida.PomodoroTelegramBot.service;
 
-
+import org.springframework.context.annotation.Lazy;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
@@ -17,11 +17,14 @@ import ru.revuelArvida.PomodoroTelegramBot.bot.PomodoroBot;
 @Scope("singleton")
 public class SendMessageBotService implements SendMessageService {
 
+
+
     private final PomodoroBot bot;
 
-    public SendMessageBotService(PomodoroBot bot){
+    public SendMessageBotService(@Lazy PomodoroBot bot){
         this.bot = bot;
     }
+
 
     @Override
     public void sendMessage(String chatId, String message) {
