@@ -3,7 +3,12 @@ package ru.revuelArvida.PomodoroTelegramBot.command.botCommands;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import ru.revuelArvida.PomodoroTelegramBot.command.Command;
+import ru.revuelArvida.PomodoroTelegramBot.command.KeyboardMarkupBuilder;
+import ru.revuelArvida.PomodoroTelegramBot.command.messageCommands.mainMenu.MainMenuMessageCommandName;
 import ru.revuelArvida.PomodoroTelegramBot.service.SendMessageService;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Implementation of {@link Command} interface for START {@link CommandName}
@@ -11,7 +16,7 @@ import ru.revuelArvida.PomodoroTelegramBot.service.SendMessageService;
  * @author RevuelArvida
  */
 
-public class StartCommand implements Command {
+class StartCommand implements Command {
 
     private final SendMessageService sendMessageService;
 
@@ -26,7 +31,19 @@ public class StartCommand implements Command {
 
     @Override
     public void execute(Update update) {
-        sendMessageService.sendMessage(update.getMessage().getChatId().toString(), START_MESSAGE);
+        MainMenuMessageCommandName[] commands = MainMenuMessageCommandName.values();
+        List<String> commandList = new ArrayList<>();
+        for (MainMenuMessageCommandName command: commands){
+            commandList.add(command.getCommandName());
+        }
+
+        KeyboardMarkupBuilder builder = new KeyboardMarkupBuilder();
+
+        sendMessageService.sendMessageWithKeyboard(
+                update.getMessage().getChatId().toString(),
+                START_MESSAGE,
+                builder.getKeyboardMarkup(commandList));
+
     }
 
 }

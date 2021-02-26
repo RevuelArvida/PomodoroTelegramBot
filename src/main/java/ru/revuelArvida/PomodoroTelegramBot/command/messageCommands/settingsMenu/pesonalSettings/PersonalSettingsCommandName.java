@@ -1,9 +1,11 @@
 package ru.revuelArvida.PomodoroTelegramBot.command.messageCommands.settingsMenu.pesonalSettings;
 
-public enum PersonalSettingsCommandName {
-    SET_WORK("установить длительность работы"),
-    SET_SHORT("установить длительность короткого перерыва"),
-    SET_LONG("установить длительность большого перерыва"),
+import ru.revuelArvida.PomodoroTelegramBot.command.messageCommands.CommandName;
+
+public enum PersonalSettingsCommandName implements CommandName {
+    SET_WORK("длительность работы"),
+    SET_SHORT("длительность короткого перерыва"),
+    SET_LONG("длительность большого перерыва"),
     EXIT("выход");
 
     private String commandName;

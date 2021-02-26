@@ -13,7 +13,7 @@ import static ru.revuelArvida.PomodoroTelegramBot.command.botCommands.CommandNam
  *
  * @author RevuelArvida
  */
-public class HelpCommand implements Command {
+class HelpCommand implements Command {
 
     private final SendMessageService sendMessageService;
 

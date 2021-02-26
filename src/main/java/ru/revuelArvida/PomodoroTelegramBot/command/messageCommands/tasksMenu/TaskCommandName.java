@@ -1,7 +1,9 @@
 package ru.revuelArvida.PomodoroTelegramBot.command.messageCommands.tasksMenu;
 
 
-public enum TaskCommandName {
+import ru.revuelArvida.PomodoroTelegramBot.command.messageCommands.CommandName;
+
+public enum TaskCommandName implements CommandName {
 
     ADD("добавить задачу"),
     ADD_FIRST("добавить задачу в начало списка"),

@@ -1,6 +1,8 @@
 package ru.revuelArvida.PomodoroTelegramBot.command.messageCommands.workMenu;
 
-public enum WorkCommandName {
+import ru.revuelArvida.PomodoroTelegramBot.command.messageCommands.CommandName;
+
+public enum WorkCommandName implements CommandName {
 
     STARTWORK("начать работу"),
     STARTBREAK("начать перерыв"),

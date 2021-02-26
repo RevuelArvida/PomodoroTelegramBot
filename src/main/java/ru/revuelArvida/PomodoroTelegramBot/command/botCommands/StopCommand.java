@@ -11,7 +11,7 @@ import ru.revuelArvida.PomodoroTelegramBot.service.SendMessageService;
  *
  * @author RevuelArvida
  */
-public class StopCommand implements Command {
+class StopCommand implements Command {
 
     private final SendMessageService sendMessageService;
 

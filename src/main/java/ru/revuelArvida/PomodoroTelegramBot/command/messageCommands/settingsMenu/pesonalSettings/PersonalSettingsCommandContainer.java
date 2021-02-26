@@ -31,6 +31,7 @@ public class PersonalSettingsCommandContainer implements Container {
                 .put(SET_WORK.getCommandName(), new SetWorkCommand(sendMessageService, checker))
                 .put(SET_SHORT.getCommandName(), new SetShortCommand(sendMessageService, checker))
                 .put(SET_LONG.getCommandName(), new SetLongCommand(sendMessageService,checker))
+                .put(EXIT.getCommandName(), new ExitPersonalCommand(sendMessageService))
                 .build();
     }
 

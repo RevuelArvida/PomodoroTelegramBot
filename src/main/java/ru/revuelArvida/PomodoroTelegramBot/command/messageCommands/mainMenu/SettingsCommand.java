@@ -5,7 +5,12 @@ import org.telegram.telegrambots.meta.api.objects.Update;
 
 
 import ru.revuelArvida.PomodoroTelegramBot.command.Command;
+import ru.revuelArvida.PomodoroTelegramBot.command.KeyboardMarkupBuilder;
+import ru.revuelArvida.PomodoroTelegramBot.command.messageCommands.settingsMenu.SettingsCommandName;
 import ru.revuelArvida.PomodoroTelegramBot.service.SendMessageService;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -28,6 +33,17 @@ class SettingsCommand implements Command {
 
     @Override
     public void execute(Update update) {
-        sendMessageService.sendMessage(update.getMessage().getChatId().toString(), SETTINGS_MESSAGE);
+        SettingsCommandName[] commands = SettingsCommandName.values();
+        List<String> commandList = new ArrayList<>();
+        for (SettingsCommandName command: commands){
+            commandList.add(command.getCommandName());
+        }
+
+        KeyboardMarkupBuilder builder = new KeyboardMarkupBuilder();
+
+
+
+        sendMessageService.sendMessageWithKeyboard(update.getMessage().getChatId().toString(),
+                SETTINGS_MESSAGE, builder.getKeyboardMarkup(commandList));
     }
 }

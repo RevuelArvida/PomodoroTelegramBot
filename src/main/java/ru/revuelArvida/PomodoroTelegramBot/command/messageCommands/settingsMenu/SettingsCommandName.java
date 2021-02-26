@@ -1,6 +1,8 @@
 package ru.revuelArvida.PomodoroTelegramBot.command.messageCommands.settingsMenu;
 
-public enum SettingsCommandName {
+import ru.revuelArvida.PomodoroTelegramBot.command.messageCommands.CommandName;
+
+public enum SettingsCommandName implements CommandName {
     DEFAULT("установить настройки по умолчанию"),
     PERSONAL("установить свои настройки"),
     EXIT("выход");
