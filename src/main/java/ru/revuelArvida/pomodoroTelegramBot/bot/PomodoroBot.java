@@ -14,7 +14,6 @@ import ru.revuelArvida.pomodoroTelegramBot.bot.states.*;
  */
 
 @Component
-@PropertySource("datasource.properties")
 public class PomodoroBot extends TelegramLongPollingBot {
 
     private final StateContext stateContext;
