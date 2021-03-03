@@ -23,3 +23,6 @@ target/
 
 
 /src/main/resources/datasource.properties
+
+### Bash ###
+*.sh
