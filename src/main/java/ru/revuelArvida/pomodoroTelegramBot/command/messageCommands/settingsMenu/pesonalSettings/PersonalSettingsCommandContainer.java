@@ -24,6 +24,8 @@ public class PersonalSettingsCommandContainer implements Container {
 
     public PersonalSettingsCommandContainer(SendMessageService sendMessageService){
         this.sendMessageService = sendMessageService;
+
+        //todo INCORRECT VALUE TRY AGAIN COMMAND
         unknownCommand = new UnknownCommand(sendMessageService);
         checker = new Checker();
 
