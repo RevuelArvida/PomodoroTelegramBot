@@ -7,6 +7,7 @@ import org.mockito.ArgumentMatchers;
 import org.mockito.Mockito;
 import ru.revuelArvida.pomodoroTelegramBot.command.AbstractCommandTest;
 import ru.revuelArvida.pomodoroTelegramBot.command.Command;
+import ru.revuelArvida.pomodoroTelegramBot.service.SchedulerService;
 
 import static ru.revuelArvida.pomodoroTelegramBot.command.messageCommands.workMenu.PauseCommand.PAUSE_MESSAGE;
 import static ru.revuelArvida.pomodoroTelegramBot.command.messageCommands.workMenu.WorkCommandName.PAUSE;
@@ -18,7 +19,8 @@ public class PauseCommandTest extends AbstractCommandTest {
     @BeforeEach
     @Override
     protected void initCommand() {
-        pauseCommand = new PauseCommand(sendMessageService);
+        SchedulerService schedulerService = Mockito.mock(SchedulerService.class);
+        pauseCommand = new PauseCommand(sendMessageService, schedulerService);
     }
 
     @Override

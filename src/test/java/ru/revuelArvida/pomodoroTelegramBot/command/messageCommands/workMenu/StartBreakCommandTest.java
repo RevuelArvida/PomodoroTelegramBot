@@ -7,6 +7,7 @@ import org.mockito.ArgumentMatchers;
 import org.mockito.Mockito;
 import ru.revuelArvida.pomodoroTelegramBot.command.AbstractCommandTest;
 import ru.revuelArvida.pomodoroTelegramBot.command.Command;
+import ru.revuelArvida.pomodoroTelegramBot.service.SchedulerService;
 
 import static ru.revuelArvida.pomodoroTelegramBot.command.messageCommands.workMenu.StartBreakCommand.START_BREAK_MESSAGE;
 import static ru.revuelArvida.pomodoroTelegramBot.command.messageCommands.workMenu.WorkCommandName.START_BREAK;
@@ -18,7 +19,8 @@ public class StartBreakCommandTest extends AbstractCommandTest {
     @BeforeEach
     @Override
     protected void initCommand() {
-       startBreakCommand = new StartBreakCommand(sendMessageService);
+        SchedulerService schedulerService = Mockito.mock(SchedulerService.class);
+       startBreakCommand = new StartBreakCommand(sendMessageService, schedulerService);
     }
 
     @Override

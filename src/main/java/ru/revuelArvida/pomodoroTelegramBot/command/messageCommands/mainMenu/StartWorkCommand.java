@@ -30,7 +30,7 @@ class StartWorkCommand implements Command {
 
     @Override
     public void execute(Update update) {
-        CommandName[] commands = WorkCommandName.values();
+        CommandName[] commands = {WorkCommandName.START_WORK, WorkCommandName.STOP};
         List<String> commandList = new ArrayList<>();
         for (CommandName command: commands){
             commandList.add(command.getCommandName());
