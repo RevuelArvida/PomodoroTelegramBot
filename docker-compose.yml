@@ -3,8 +3,8 @@ version: '3.1'
 services:
   pomodoroTelegramBot:
     build:
-      context: .
-      enviroment:
-        -BOT_NAME=${BOT_NAME}
-        -BOT_TOKEN=${BOT_TOKEN}
-      restart: always
+      context
+    enviroment:
+      -BOT_NAME=${BOT_NAME}
+      -BOT_TOKEN=${BOT_TOKEN}
+    restart: always
