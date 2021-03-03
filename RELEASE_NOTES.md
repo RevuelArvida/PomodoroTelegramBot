@@ -13,4 +13,4 @@
 * All implemented features covered with tests
 
 ## 0.4.0-Snapshot
-* PTB-8: added deployment process to the project
+* PTB-8: added deployment process to the projec
