@@ -27,7 +27,7 @@
 
 	<groupId>ru.revuelArvida</groupId>
 	<artifactId>PomodoroTelegramBot</artifactId>
-	<version>0.0.2-SNAPSHOT</version>
+	<version>0.3.0-SNAPSHOT</version>
 	<name>PomodoroTelegramBot</name>
 	<description>Time management telegram bot</description>
 

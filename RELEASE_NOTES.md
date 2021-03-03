@@ -6,3 +6,8 @@
 * Added telegram bot starter
 * Registered bot
 
+## 0.3.0-Snapshot
+* Added Command pattern
+* Added State pattern
+* Implemented menus
+* All implemented features covered with tests

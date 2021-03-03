@@ -1,8 +1,9 @@
-package ru.revuelArvida.PomodoroTelegramBot;
+package ru.revuelArvida.pomodoroTelegramBot;
 
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import ru.revuelArvida.pomodoroTelegramBot.bot.PomodoroBot;
 
 
 @SpringBootApplication

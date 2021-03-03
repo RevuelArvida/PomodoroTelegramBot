@@ -1,4 +1,4 @@
-package ru.revuelArvida.PomodoroTelegramBot;
+package ru.revuelArvida.pomodoroTelegramBot;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
