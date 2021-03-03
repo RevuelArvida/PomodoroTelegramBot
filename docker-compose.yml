@@ -4,7 +4,7 @@ services:
   pomodoroTelegramBot:
     build:
       context: .
-    enviroment:
+    environment:
       -BOT_NAME=${BOT_NAME}
       -BOT_TOKEN=${BOT_TOKEN}
     restart: always
