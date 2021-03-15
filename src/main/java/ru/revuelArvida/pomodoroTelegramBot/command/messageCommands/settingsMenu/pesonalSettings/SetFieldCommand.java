@@ -4,7 +4,14 @@ import org.telegram.telegrambots.meta.api.objects.Update;
 import ru.revuelArvida.pomodoroTelegramBot.bot.states.StateContext;
 import ru.revuelArvida.pomodoroTelegramBot.bot.states.StateList;
 import ru.revuelArvida.pomodoroTelegramBot.command.Command;
+import ru.revuelArvida.pomodoroTelegramBot.command.KeyboardMarkupBuilder;
+import ru.revuelArvida.pomodoroTelegramBot.command.messageCommands.CommandName;
+import ru.revuelArvida.pomodoroTelegramBot.command.messageCommands.mainMenu.MainMenuMessageCommandName;
+import ru.revuelArvida.pomodoroTelegramBot.command.messageCommands.workMenu.WorkCommandName;
 import ru.revuelArvida.pomodoroTelegramBot.service.SendMessageService;
+
+import java.util.ArrayList;
+import java.util.List;
 
 class SetFieldCommand implements Command {
 
@@ -43,7 +50,17 @@ class SetFieldCommand implements Command {
             }
 
             if (checker.getIsLongBreakSet() & checker.getIsWorkSet() & checker.getIsShortBrakeSet()){
-                sendMessageService.sendMessage(update.getMessage().getChatId().toString(), ALL_SET_UP);
+                CommandName[] commands = MainMenuMessageCommandName.values();
+
+                List<String> commandList = new ArrayList<>();
+                for (CommandName command: commands){
+                    commandList.add(command.getCommandName());
+                }
+                KeyboardMarkupBuilder builder = new KeyboardMarkupBuilder();
+
+
+                sendMessageService.sendMessageWithKeyboard(update.getMessage().getChatId().toString(),
+                        ALL_SET_UP, builder.getKeyboardMarkup(commandList));
                 stateContext.setState(StateList.SLEEP);
             }
 

@@ -16,7 +16,7 @@ public class SchedulerService {
 
     SendMessageService sendMessageService;
     Timer timer;
-    TimerTask task;
+
 
     
     public SchedulerService(SendMessageService sendMessageService){
@@ -26,15 +26,21 @@ public class SchedulerService {
 
     public void startTimer(String chatId, String message,TimerType timerType,
                            ReplyKeyboardMarkup replyKeyboardMarkup){
-        task = new TimerTask() {
+        TimerTask task = getTask(chatId, message, replyKeyboardMarkup);
+
+            //todo CustomTimer
+            //Test timer
+            timer.schedule(task, 1 * 60000);
+    }
+
+    private TimerTask getTask(String chatId, String message,
+                              ReplyKeyboardMarkup replyKeyboardMarkup){
+        return new TimerTask() {
             @Override
             public void run() {
                 sendMessageService.sendMessageWithKeyboard(chatId, message, replyKeyboardMarkup);
             }
         };
-            //todo CustomTimer
-            //Test timer
-            timer.schedule(task, 1 * 60000);
     }
     
     public void stopTimer(){

@@ -4,6 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentMatchers;
 import org.mockito.Mockito;
+import org.telegram.telegrambots.meta.api.objects.replykeyboard.ReplyKeyboardMarkup;
 import ru.revuelArvida.pomodoroTelegramBot.bot.states.StateContext;
 import ru.revuelArvida.pomodoroTelegramBot.bot.states.StateList;
 import ru.revuelArvida.pomodoroTelegramBot.command.AbstractCommandTest;
@@ -85,8 +86,9 @@ public class SetFieldCommandTest extends AbstractCommandTest {
         //when
         getCommand().execute(update);
         //then
-        Mockito.verify(sendMessageService).sendMessage(ArgumentMatchers.any(),
-                ArgumentMatchers.matches(ALL_SET_UP));
+        Mockito.verify(sendMessageService).sendMessageWithKeyboard(ArgumentMatchers.any(),
+                ArgumentMatchers.matches(ALL_SET_UP),
+                ArgumentMatchers.any(ReplyKeyboardMarkup.class));
         Mockito.verify(checker).setSetField(ArgumentMatchers.isNull());
         Mockito.verify(stateContext).setState(ArgumentMatchers.eq(StateList.SLEEP));
     }
