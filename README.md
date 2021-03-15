@@ -1,5 +1,5 @@
 ## Overview
-Time management Telegram Bot, helping with work\brake periods and task managment.
+Time management Telegram Bot based on Pomodoro technique, helping with work\brake periods and task managment.
 
 ## Features
 * Bot tracks your time, by telling when to rest, and when to work!
