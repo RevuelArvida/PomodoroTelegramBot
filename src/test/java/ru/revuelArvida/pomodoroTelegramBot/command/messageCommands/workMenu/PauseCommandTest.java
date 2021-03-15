@@ -5,8 +5,10 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentMatchers;
 import org.mockito.Mockito;
+import org.telegram.telegrambots.meta.api.objects.replykeyboard.ReplyKeyboardMarkup;
 import ru.revuelArvida.pomodoroTelegramBot.command.AbstractCommandTest;
 import ru.revuelArvida.pomodoroTelegramBot.command.Command;
+import ru.revuelArvida.pomodoroTelegramBot.service.SchedulerService;
 
 import static ru.revuelArvida.pomodoroTelegramBot.command.messageCommands.workMenu.PauseCommand.PAUSE_MESSAGE;
 import static ru.revuelArvida.pomodoroTelegramBot.command.messageCommands.workMenu.WorkCommandName.PAUSE;
@@ -18,7 +20,8 @@ public class PauseCommandTest extends AbstractCommandTest {
     @BeforeEach
     @Override
     protected void initCommand() {
-        pauseCommand = new PauseCommand(sendMessageService);
+        SchedulerService schedulerService = Mockito.mock(SchedulerService.class);
+        pauseCommand = new PauseCommand(sendMessageService, schedulerService);
     }
 
     @Override
@@ -44,8 +47,9 @@ public class PauseCommandTest extends AbstractCommandTest {
         //when
         getCommand().execute(update);
         //then;
-        Mockito.verify(sendMessageService).sendMessage(
+        Mockito.verify(sendMessageService).sendMessageWithKeyboard(
                 ArgumentMatchers.any(),
-                ArgumentMatchers.eq(getCommandMessage()));
+                ArgumentMatchers.eq(getCommandMessage()),
+                ArgumentMatchers.any(ReplyKeyboardMarkup.class));
     }
 }

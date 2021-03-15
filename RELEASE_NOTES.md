@@ -14,3 +14,6 @@
 
 ## 0.4.0-Snapshot
 * PTB-8: added deployment process to the projec
+
+## 0.5.0-Snapshot
+* PTB-4: added scheduling features

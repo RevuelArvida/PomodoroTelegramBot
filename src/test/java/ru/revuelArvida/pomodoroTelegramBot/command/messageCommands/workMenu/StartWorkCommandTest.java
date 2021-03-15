@@ -5,8 +5,10 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentMatchers;
 import org.mockito.Mockito;
+import org.telegram.telegrambots.meta.api.objects.replykeyboard.ReplyKeyboardMarkup;
 import ru.revuelArvida.pomodoroTelegramBot.command.AbstractCommandTest;
 import ru.revuelArvida.pomodoroTelegramBot.command.Command;
+import ru.revuelArvida.pomodoroTelegramBot.service.SchedulerService;
 
 import static ru.revuelArvida.pomodoroTelegramBot.command.messageCommands.workMenu.StartWorkCommand.START_WORK_MESSAGE;
 import static ru.revuelArvida.pomodoroTelegramBot.command.messageCommands.workMenu.WorkCommandName.START_WORK;
@@ -18,7 +20,8 @@ public class StartWorkCommandTest extends AbstractCommandTest {
     @BeforeEach
     @Override
     protected void initCommand() {
-        startWorkCommand = new StartWorkCommand(sendMessageService);
+        SchedulerService schedulerService = Mockito.mock(SchedulerService.class);
+        startWorkCommand = new StartWorkCommand(sendMessageService, schedulerService);
     }
 
     @Override
@@ -44,8 +47,9 @@ public class StartWorkCommandTest extends AbstractCommandTest {
         //when
         getCommand().execute(update);
         //then;
-        Mockito.verify(sendMessageService).sendMessage(
+        Mockito.verify(sendMessageService).sendMessageWithKeyboard(
                 ArgumentMatchers.any(),
-                ArgumentMatchers.eq(getCommandMessage()));
+                ArgumentMatchers.eq(getCommandMessage()),
+                ArgumentMatchers.any(ReplyKeyboardMarkup.class));
     }
 }
